@@ -1,0 +1,96 @@
+html {
+  box-sizing: border-box;
+}
+
+*, ::after, ::before {
+  box-sizing: inherit;
+}
+
+#canvas {
+  height: 1000px;
+  margin: 0 20%;
+  width: 1000px;
+  background-color: black;
+}
+
+.title {
+  height: 100px;
+}
+
+.scoreboard {
+  height: 100px;
+  background-color: pink;
+}
+
+.game-message {
+  height: 100px;
+  background-color: brown;
+}
+
+.play-field {
+    width: 1000px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.row-1 {
+  height: 150px;
+  background-color: yellow;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.row-2 {
+  height: 150px;
+  background-color: blue;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.row-3 {
+  height: 150px;
+  background-color: green;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.col-1 {
+  width: 150px;
+  height: 150px;
+  border: solid 2px antiquewhite;
+}
+
+.col-2 {
+  width: 150px;
+  height: 150px;
+  border: solid 2px antiquewhite;
+}
+
+.col-3 {
+  width: 150px;
+  height: 150px;
+  border: solid 2px antiquewhite;
+}
+
+.col-4 {
+  width: 150px;
+  height: 150px;
+  border: solid 2px antiquewhite;
+}
+
+.col-5 {
+  width: 150px;
+  height: 150px;
+  border: solid 2px antiquewhite;
+}
+
+.col-6 {
+  width: 150px;
+  height: 150px;
+  border: solid 2px antiquewhite;
+}
