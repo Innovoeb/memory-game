@@ -2,8 +2,8 @@
 var cardArr = [
   {
     name: "ackbar",
-    // image: "./assets/ackbar.png",
-    image: '<img src="./assets/lakers.jpg" width="150px">',
+    image: "./assets/ackbar.png",
+    // image: '<img src="./assets/lakers.jpg" width="150px">',
     value: 1
   },
   {
@@ -48,8 +48,8 @@ var cardArr = [
   },
   {
     name: "ackbar",
-    // image: "./assets/ackbar.png",
-    image: '<img src="./assets/lakers.jpg" width="150px">',
+    image: "./assets/ackbar.png",
+    // image: '<img src="./assets/lakers.jpg" width="150px">',
     value: 1
   },
   {

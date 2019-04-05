@@ -60,6 +60,7 @@ body {
 /* game message div */
 .game-message {
   height: 100px;
+
 }
 
 #start {
@@ -73,6 +74,7 @@ body {
   border-color: yellow;
   border-width: thick;
   outline: none;
+
 }
 /* playing field div */
 .play-field {
