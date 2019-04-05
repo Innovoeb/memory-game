@@ -5,28 +5,28 @@ html {
 *, ::after, ::before {
   box-sizing: inherit;
 }
-
+/* canvas div */
 #canvas {
   height: 1000px;
   margin: 0 20%;
   width: 1000px;
   background-color: black;
 }
-
+/* title div */
 .title {
   height: 100px;
 }
-
+/* scoreboard div */
 .scoreboard {
   height: 100px;
   background-color: pink;
 }
-
+/* game message div */
 .game-message {
   height: 100px;
   background-color: brown;
 }
-
+/* playing field div */
 .play-field {
     width: 1000px;
     height: 500px;
@@ -34,7 +34,7 @@ html {
     flex-direction: column;
     justify-content: space-around;
 }
-
+/* playing field rows & columns */
 .row-1 {
   height: 150px;
   background-color: yellow;
@@ -93,4 +93,9 @@ html {
   width: 150px;
   height: 150px;
   border: solid 2px antiquewhite;
+}
+
+.show {
+  background-color: pink;
+
 }
