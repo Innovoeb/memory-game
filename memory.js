@@ -1,5 +1,5 @@
 // jquery ready on page load
-$(document).ready(function() {
+$(document).ready(function () {
   // event handlers
   // $('.row-1').on('click', 'div', function() {
   //   console.log("yo");
@@ -18,9 +18,10 @@ $(document).ready(function() {
   var pickA
   var pickB
   var score = 0
-  var turns = 10
+  var turns = 1
 
-  $('.title').on('click', '#start', function() {
+  $('.title').on('click', '#start', function () {
+    $('.card').attr('disabled', false)
     shuffArr(cardArr)
     placeOBJ()
     var cardA = ""
@@ -29,39 +30,56 @@ $(document).ready(function() {
     var pickB = ""
     var score = 0
     var turns = 10
-
   })
 
-  $('.play-field').on('click', '.card', function() {
+  $('.play-field').on('click', '.card', function () {
     if (cardA == null) {
       cardA = this.innerHTML
       pickA = this.id
+      playSound("blaster")
 
       console.log("cardA:", cardA)
       console.log("pickA:", pickA)
-    } else if (cardB == null ) {
+    } else if (cardB == null) {
       cardB = this.innerHTML
       pickB = this.id
+      playSound("blaster")
 
       console.log("cardB:", cardB)
       console.log("pickB:", pickB)
-        if (cardA == cardB) {
-            score++
-            cardA = null
-            cardB = null
+      if (cardA == cardB) {
+        score++
+        cardA = null
+        cardB = null
+        shuffArr(praise)
+        document.querySelector('game-message').innerHTML = `${praise[0]}`
 
-            console.log("score:", score)
-        } else {
-            turns--
-            $(pickA).removeClass('show')
-            $(pickB).removeClass('show')
-            cardA = null
-            cardB = null
+        console.log("score:", score)
+      } else {
+        turns--
+        $(pickA).removeClass('show')
+        $(pickB).removeClass('show')
+        cardA = null
+        cardB = null
+        shuffArr(encourage)
+        document.querySelector('game-message').innerHTML = `${encourage[0]}`
 
-            console.log("turns:", turns)
+        console.log("turns:", turns)
       }
+    }
+  })
+
+  if (score === 9) {
+    playSound("cantina")
+    document.querySelector('game-message').innerHTML = `The force is strong with this one!`
+    $('.card').attr('disabled', true)
   }
-})
+
+  if (turns === 0) {
+    playSound("fates")
+    document.querySelector('game-message').innerHTML = `The force is strong with this one!`
+    $('.card').attr('disabled', true)
+  }
 
   // shuffle array function
   function shuffArr(array) {

@@ -25,6 +25,7 @@ html {
 .game-message {
   height: 100px;
   background-color: brown;
+  color: yellow;
 }
 /* playing field div */
 .play-field {
