@@ -1,3 +1,6 @@
+
+
+
 html {
   box-sizing: border-box;
 }
@@ -5,26 +8,71 @@ html {
 *, ::after, ::before {
   box-sizing: inherit;
 }
+
+body {
+  background-image: url("http://sfwallpaper.com/images/star-wars-death-star-wallpaper-15.jpg");
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
 /* canvas div */
 #canvas {
-  height: 1000px;
+  height: 810px;
   margin: 0 20%;
   width: 1000px;
-  background-color: black;
+  background-color: transparent;
+  border: 2px solid yellow;
 }
 /* title div */
 .title {
   height: 100px;
 }
+
+#game-title {
+  color: yellow;
+  font-size: 5em;
+  position: absolute;
+  left: 450px;
+  top: -100px;
+}
 /* scoreboard div */
 .scoreboard {
   height: 100px;
-  background-color: pink;
+  color: yellow;
+  display: flex;
+  justify-content: space-around;
+  font-size: 3em;
+}
+
+#turns {
+  position: absolute;
+  left: 430px;
+  top: 80px;
+}
+
+#score {
+  position: absolute;
+  left: 1090px;
+  top: 85px;
 }
 /* game message div */
 .game-message {
   height: 100px;
-  background-color: brown;
+}
+
+#start {
+  position: absolute;
+  left: 740px;
+  top: 230px;
+  font-size: 3em;
+  color: yellow;
+  background-color: black;
+  border-radius: 30px;
+  border-color: yellow;
+  border-width: thick;
+  outline: none;
 }
 /* playing field div */
 .play-field {
@@ -34,10 +82,15 @@ html {
     flex-direction: column;
     justify-content: space-around;
 }
+
+.card {
+  background-image: url("./assets/uncle-luke.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 /* playing field rows & columns */
 .row-1 {
   height: 150px;
-  background-color: yellow;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -45,7 +98,6 @@ html {
 
 .row-2 {
   height: 150px;
-  background-color: blue;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -53,7 +105,6 @@ html {
 
 .row-3 {
   height: 150px;
-  background-color: green;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
