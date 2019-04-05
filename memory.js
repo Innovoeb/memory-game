@@ -17,11 +17,17 @@ $(document).ready(function () {
   var cardB
   var pickA
   var pickB
-  var score = 0
-  var turns = 1
+  var score
+  var turns
+  var blaster = new Audio('./assets/blaster.mp3');
+  var cantina = new Audio('./assets/cantina.mp3');
+  var fates = new Audio('./assets/fates.mp3');
+  var r2d2 = new Audio('./assets/r2d2.mp3');
+
 
   $('.title').on('click', '#start', function () {
     $('.card').attr('disabled', false)
+    r2d2.play();
     shuffArr(cardArr)
     placeOBJ()
     var cardA = ""
@@ -33,26 +39,25 @@ $(document).ready(function () {
   })
 
   $('.play-field').on('click', '.card', function () {
+    blaster.play();
     if (cardA == null) {
       cardA = this.innerHTML
       pickA = this.id
-      playSound("blaster")
 
       console.log("cardA:", cardA)
       console.log("pickA:", pickA)
     } else if (cardB == null) {
       cardB = this.innerHTML
       pickB = this.id
-      playSound("blaster")
 
       console.log("cardB:", cardB)
       console.log("pickB:", pickB)
       if (cardA == cardB) {
-        score++
+        score += 1
         cardA = null
         cardB = null
         shuffArr(praise)
-        document.querySelector('game-message').innerHTML = `${praise[0]}`
+        document.querySelector('.game-message').innerHTML = `${praise[0]}`
 
         console.log("score:", score)
       } else {
@@ -62,7 +67,7 @@ $(document).ready(function () {
         cardA = null
         cardB = null
         shuffArr(encourage)
-        document.querySelector('game-message').innerHTML = `${encourage[0]}`
+        document.querySelector('.game-message').innerHTML = `${encourage[0]}`
 
         console.log("turns:", turns)
       }
@@ -70,14 +75,14 @@ $(document).ready(function () {
   })
 
   if (score === 9) {
-    playSound("cantina")
-    document.querySelector('game-message').innerHTML = `The force is strong with this one!`
+    cantina.play();
+    document.querySelector('.game-message').innerHTML = `The force is strong with this one!`
     $('.card').attr('disabled', true)
   }
 
   if (turns === 0) {
-    playSound("fates")
-    document.querySelector('game-message').innerHTML = `The force is strong with this one!`
+    fates.play();
+    document.querySelector('.game-message').innerHTML = `The force is strong with this one!`
     $('.card').attr('disabled', true)
   }
 
