@@ -1,8 +1,7 @@
 // jquery ready on page load
-$(document).ready(function () {
+$(document).ready(function() {
 
-
-  // global variables
+  //global variables
   var cardA
   var cardB
   var pickA
@@ -13,14 +12,17 @@ $(document).ready(function () {
   var cantina = new Audio('./assets/cantina.mp3');
   var fates = new Audio('./assets/fates.mp3');
   var r2d2 = new Audio('./assets/r2d2.mp3');
-  //scoreboard
+
+  // scoreboard
   document.querySelector('#score').innerHTML = `Score: ${score}`
   document.querySelector('#turns').innerHTML = `${turns} Turns Left`
 
   // game initialization
   $('.title').on('click', '#start', function () {
+
     $('.card').prop('disabled', false)
     // $('.card').addClass('hide')
+
     r2d2.play();
     shuffArr(cardArr)
     placeOBJ()
@@ -30,12 +32,15 @@ $(document).ready(function () {
     var pickB = ""
     var score = 0
     var turns = 10
-    $("#start").remove()
     $(".play-field").show()
-
+    $("#start").remove()
+    $("#game-title").remove()
   })
 
+
+  // onclick of cards
   $('.play-field').on('click', '.card', function () {
+
     // $(this).removeClass('hide')
     blaster.play();
     if (cardA == null) {
@@ -43,13 +48,16 @@ $(document).ready(function () {
       pickA = this.id
       // $(this).prop('disabled', true)
       // blaster.play();
+
       console.log("cardA:", cardA)
       console.log("pickA:", pickA)
     } else if (cardB == null) {
       cardB = this.innerHTML
       pickB = this.id
+
       // $(this).prop('disabled', true)
       // blaster.play();
+
       console.log("cardB:", cardB)
       console.log("pickB:", pickB)
       if (cardA == cardB) {
@@ -92,7 +100,8 @@ $(document).ready(function () {
         }
       }
     }
-  })
+
+
 
 
 
@@ -110,26 +119,29 @@ $(document).ready(function () {
     }
     return array
   }
-  // displays cards into play-field div
+
+  // display cards and values into playfield div
   function placeOBJ() {
-    document.querySelector('#r1c1').innerHTML = `${cardArr[0].image}`
-    document.querySelector('#r1c2').innerHTML = `${cardArr[1].image}`
-    document.querySelector('#r1c3').innerHTML = `${cardArr[2].image}`
-    document.querySelector('#r1c4').innerHTML = `${cardArr[3].image}`
-    document.querySelector('#r1c5').innerHTML = `${cardArr[4].image}`
-    document.querySelector('#r1c6').innerHTML = `${cardArr[5].image}`
-    document.querySelector('#r2c1').innerHTML = `${cardArr[6].image}`
-    document.querySelector('#r2c2').innerHTML = `${cardArr[7].image}`
-    document.querySelector('#r2c3').innerHTML = `${cardArr[8].image}`
-    document.querySelector('#r2c4').innerHTML = `${cardArr[9].image}`
-    document.querySelector('#r2c5').innerHTML = `${cardArr[10].image}`
-    document.querySelector('#r2c6').innerHTML = `${cardArr[11].image}`
-    document.querySelector('#r3c1').innerHTML = `${cardArr[12].image}`
-    document.querySelector('#r3c2').innerHTML = `${cardArr[13].image}`
-    document.querySelector('#r3c3').innerHTML = `${cardArr[14].image}`
-    document.querySelector('#r3c4').innerHTML = `${cardArr[15].image}`
-    document.querySelector('#r3c5').innerHTML = `${cardArr[16].image}`
-    document.querySelector('#r3c6').innerHTML = `${cardArr[17].image}`
+    document.querySelector('#r1c1').innerHTML = `${cardArr[0].value}`
+    document.querySelector('#r1c2').innerHTML = `${cardArr[1].value}`
+    document.querySelector('#r1c3').innerHTML = `${cardArr[2].value}`
+    document.querySelector('#r1c4').innerHTML = `${cardArr[3].value}`
+    document.querySelector('#r1c5').innerHTML = `${cardArr[4].value}`
+    document.querySelector('#r1c6').innerHTML = `${cardArr[5].value}`
+    document.querySelector('#r2c1').innerHTML = `${cardArr[6].value}`
+    document.querySelector('#r2c2').innerHTML = `${cardArr[7].value}`
+    document.querySelector('#r2c3').innerHTML = `${cardArr[8].value}`
+    document.querySelector('#r2c4').innerHTML = `${cardArr[9].value}`
+    document.querySelector('#r2c5').innerHTML = `${cardArr[10].value}`
+    document.querySelector('#r2c6').innerHTML = `${cardArr[11].value}`
+    document.querySelector('#r3c1').innerHTML = `${cardArr[12].value}`
+    document.querySelector('#r3c2').innerHTML = `${cardArr[13].value}`
+    document.querySelector('#r3c3').innerHTML = `${cardArr[14].value}`
+    document.querySelector('#r3c4').innerHTML = `${cardArr[15].value}`
+    document.querySelector('#r3c5').innerHTML = `${cardArr[16].value}`
+    document.querySelector('#r3c6').innerHTML = `${cardArr[17].value}`
   }
+
+
 
 })

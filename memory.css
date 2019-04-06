@@ -57,9 +57,11 @@ body {
 .game-message {
   height: 100px;
   color: yellow;
+
   font-size: 3em;
   margin: 100px 20px 0;
   text-align: center
+
 }
 
 #start {
@@ -87,20 +89,18 @@ body {
   display: none;
 }
 
+.card {
+  background-image: url("./assets/uncle-luke.jpg");
+  background-size: cover;
+}
 
 
 /*.card {
-  background-image: url("./assets/uncle-luke.jpg");
-  background-size: cover;
-}*/
-
-
-.card {
   z-index: 0;
 }
 
 /* back of card */
-.hide {
+/*.hide {
   background-image: url("./assets/uncle-luke.jpg");
   background-size: cover;
 }
