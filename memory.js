@@ -1,5 +1,8 @@
 // jquery ready on page load
 $(document).ready(function () {
+
+
+  // global variables
   var cardA
   var cardB
   var pickA
@@ -10,11 +13,11 @@ $(document).ready(function () {
   var cantina = new Audio('./assets/cantina.mp3');
   var fates = new Audio('./assets/fates.mp3');
   var r2d2 = new Audio('./assets/r2d2.mp3');
-
+  //scoreboard
   document.querySelector('#score').innerHTML = `Score: ${score}`
   document.querySelector('#turns').innerHTML = `${turns} Turns Left`
 
-
+// game initialization
   $('.title').on('click', '#start', function () {
     $('.card').attr('disabled', false)
     // $('.card').addClass('hide')
@@ -27,6 +30,9 @@ $(document).ready(function () {
     var pickB = ""
     var score = 0
     var turns = 10
+    $("#start").remove()
+    $(".play-field").show()
+
   })
 
   $('.play-field').on('click', '.card', function () {
@@ -94,7 +100,7 @@ $(document).ready(function () {
     }
     return array
   }
-  // place object into div function
+  // displays cards into play-field div
   function placeOBJ() {
     document.querySelector('#r1c1').innerHTML = `${cardArr[0].image}`
     document.querySelector('#r1c2').innerHTML = `${cardArr[1].image}`
