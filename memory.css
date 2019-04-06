@@ -94,6 +94,10 @@ body {
   background-size: cover;
 }
 
+.selected {
+  border: 2px yellow solid
+}
+
 
 /*.card {
   z-index: 0;
