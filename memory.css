@@ -24,30 +24,32 @@ body {
   width: 1000px;
   background-color: transparent;
   border: 2px solid yellow;
+  position: relative;
 }
 /* title div */
 .title {
-  height: 100px;
+  height: 20px;
 }
 
 #game-title {
   color: yellow;
   font-size: 5em;
   position: absolute;
-  left: 450px;
+  left: 5%;
   top: -100px;
   margin-bottom: 0px;
 }
 /* scoreboard div */
 .scoreboard {
-  height: 150px;
+  height: 100px;
   width: 1000px;
   color: yellow;
   display: flex;
   justify-content: space-around;
   font-size: 3em;
   position: absolute;
-  left: 390px;
+  top: 770px;
+  left: 290px;
 }
 
 
@@ -55,13 +57,15 @@ body {
 .game-message {
   height: 100px;
   color: yellow;
-  font-size: 5em;
+  font-size: 3em;
+  margin: 100px 20px 0;
+  text-align: center
 }
 
 #start {
   position: absolute;
-  left: 740px;
-  top: 160px;
+  left: 370px;
+  top: 220px;
   font-size: 3em;
   color: yellow;
   background-color: black;
