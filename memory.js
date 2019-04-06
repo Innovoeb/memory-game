@@ -1,32 +1,23 @@
 // jquery ready on page load
 $(document).ready(function () {
-  // event handlers
-  // $('.row-1').on('click', 'div', function() {
-  //   console.log("yo");
-  //   $(this).addClass('show')
-  // })
-  //
-  // $('.row-2').on('click', 'div', function() {
-  //   console.log("hey, what's happenin")
-  // })
-  //
-  // $('.row-3').on('click', 'div', function() {
-  //   placeOBJ()
-  // })
   var cardA
   var cardB
   var pickA
   var pickB
-  var score
-  var turns
+  var score = 0
+  var turns = 10
   var blaster = new Audio('./assets/blaster.mp3');
   var cantina = new Audio('./assets/cantina.mp3');
   var fates = new Audio('./assets/fates.mp3');
   var r2d2 = new Audio('./assets/r2d2.mp3');
 
+  document.querySelector('#score').innerHTML = `Score: ${score}`
+  document.querySelector('#turns').innerHTML = `${turns} Turns Left`
+
 
   $('.title').on('click', '#start', function () {
     $('.card').attr('disabled', false)
+    // $('.card').addClass('hide')
     r2d2.play();
     shuffArr(cardArr)
     placeOBJ()
@@ -39,6 +30,7 @@ $(document).ready(function () {
   })
 
   $('.play-field').on('click', '.card', function () {
+    $(this).removeClass('hide')
     blaster.play();
     if (cardA == null) {
       cardA = this.innerHTML
@@ -58,6 +50,8 @@ $(document).ready(function () {
         cardB = null
         shuffArr(praise)
         document.querySelector('.game-message').innerHTML = `${praise[0]}`
+        document.querySelector('#score').innerHTML = `Score: ${score}`
+        document.querySelector('#turns').innerHTML = `${turns} Turns Left`
 
         console.log("score:", score)
       } else {
@@ -68,6 +62,8 @@ $(document).ready(function () {
         cardB = null
         shuffArr(encourage)
         document.querySelector('.game-message').innerHTML = `${encourage[0]}`
+        document.querySelector('#score').innerHTML = `Score: ${score}`
+        document.querySelector('#turns').innerHTML = `${turns} Turns Left`
 
         console.log("turns:", turns)
       }
@@ -82,7 +78,7 @@ $(document).ready(function () {
 
   if (turns === 0) {
     fates.play();
-    document.querySelector('.game-message').innerHTML = `The force is strong with this one!`
+    document.querySelector('.game-message').innerHTML = `Aren’t you a little short for a stormtrooper?`
     $('.card').attr('disabled', true)
   }
 

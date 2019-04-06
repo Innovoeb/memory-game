@@ -44,23 +44,25 @@ body {
   display: flex;
   justify-content: space-around;
   font-size: 3em;
+  position: relative;
 }
 
 #turns {
   position: absolute;
-  left: 430px;
-  top: 80px;
+  left: 50px;
+  top: 0px;
 }
 
 #score {
   position: absolute;
-  left: 1090px;
-  top: 85px;
+  right: 50px;
+  top: 0px;
 }
 /* game message div */
 .game-message {
   height: 100px;
-
+ color: yellow;
+ font-size: 5em;
 }
 
 #start {
@@ -86,10 +88,15 @@ body {
 }
 
 .card {
+  z-index: 0;
+}
+
+/* back of card */
+.hide {
   background-image: url("./assets/uncle-luke.jpg");
   background-size: cover;
-  background-repeat: no-repeat;
 }
+
 /* playing field rows & columns */
 .row-1 {
   height: 150px;
