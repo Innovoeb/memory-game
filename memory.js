@@ -19,7 +19,10 @@ $(document).ready(function() {
 
   // game initialization
   $('.title').on('click', '#start', function () {
-//    $('.card').attr('disabled', false)
+
+    $('.card').prop('disabled', false)
+    // $('.card').addClass('hide')
+
     r2d2.play();
     shuffArr(cardArr)
     placeOBJ()
@@ -37,15 +40,14 @@ $(document).ready(function() {
 
   // onclick of cards
   $('.play-field').on('click', '.card', function () {
-      blaster.play();
-      $(this).html(`${cardArr[0].image}`)
 
-
-
+    // $(this).removeClass('hide')
+    blaster.play();
     if (cardA == null) {
       cardA = this.innerHTML
       pickA = this.id
-
+      // $(this).prop('disabled', true)
+      // blaster.play();
 
       console.log("cardA:", cardA)
       console.log("pickA:", pickA)
@@ -53,6 +55,8 @@ $(document).ready(function() {
       cardB = this.innerHTML
       pickB = this.id
 
+      // $(this).prop('disabled', true)
+      // blaster.play();
 
       console.log("cardB:", cardB)
       console.log("pickB:", pickB)
@@ -66,10 +70,19 @@ $(document).ready(function() {
         document.querySelector('#turns').innerHTML = `${turns} Turns Left`
 
         console.log("score:", score)
+
+        if (score === 9) {
+          cantina.play();
+          document.querySelector('.game-message').innerHTML = `The force is strong with this one!`
+          $('.card').prop('disabled', true)
+          $("#start").show()
+        }
       } else {
         turns--
-        $(pickA).removeClass('show')
-        $(pickB).removeClass('show')
+        // $(pickA).removeClass('show')
+        // $(pickB).removeClass('show')
+        // $(pickA).prop('disabled', false)
+        // $(pickB).prop('disabled', false)
         cardA = null
         cardB = null
         shuffArr(encourage)
@@ -78,22 +91,21 @@ $(document).ready(function() {
         document.querySelector('#turns').innerHTML = `${turns} Turns Left`
 
         console.log("turns:", turns)
+
+        if (turns === 0) {
+          fates.play();
+          document.querySelector('.game-message').innerHTML = `Aren’t you a little short for a stormtrooper?`
+          $('.card').prop('disabled', true)
+          $("#start").show()
+        }
       }
     }
 
 
-    if (score == 9) {
-    cantina.play();
-    document.querySelector('.game-message').innerHTML = `The force is strong with this one!`
-    $('.card').attr('disabled', true)
-    }
 
-    if (turns == 0) {
-    fates.play();
-    document.querySelector('.game-message').innerHTML = `Aren’t you a little short for a stormtrooper?`
-    $('.card').attr('disabled', true)
-    }
-  })
+
+
+
 
   // shuffle array function
   function shuffArr(array) {
