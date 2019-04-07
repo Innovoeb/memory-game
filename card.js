@@ -2,91 +2,53 @@
 var cardArr = [
   {
     name: "ackbar",
-    image: "<img src='./assets/akbar.jpg'>",
-    value: 1
+    image:'./assets/akbar.jpg',
+
   },
   {
     name: "boba",
-    image: "<img src='./assets/bobafett.jpg'>",
-    value: 2
+    image:'./assets/bobafett.jpg',
+
   },
   {
     name: "c3po",
-    image: "<img src='./assets/c3p.jpg'>",
-    value: 3
+    image:'./assets/c3p.jpg',
+
   },
   {
     name: "chewie",
-    image: "<img src='./assets/chewy.jpg'>",
-    value: 4
+    image:'./assets/chewy.jpg',
+
   },
   {
     name: "darth",
-    image: "<img src='./assets/anakin.jpg'>",
-    value: 5
+    image:'./assets/anakin.jpg',
+
   },
   {
     name: "greedo",
-    image: "<img src='./assets/shot-too-late.jpg'>",
-    value: 6
+    image:'./assets/shot-too-late.jpg',
+
   },
   {
     name: "han",
-    image: "<img src='./assets/shot-first.jpg'>",
-    value: 7
+    image:'./assets/shot-first.jpg',
+
   },
   {
     name: "leia",
-    image: "<img src='./assets/princess.jpg'>",
-    value: 8
+    image:'./assets/princess.jpg',
+
   },
   {
     name: "r2d2",
-    image: "<img src='./assets/droid.jpg'>",
-    value: 9
+    image:'./assets/droid.jpg',
+
   },
-  {
-    name: "ackbar",
-    image: "<img src='./assets/akbar.jpg'>",
-    value: 1
-  },
-  {
-    name: "boba",
-    image: "<img src='./assets/bobafett.jpg'>",
-    value: 2
-  },
-  {
-    name: "c3po",
-    image: "<img src='./assets/c3p.jpg'>",
-    value: 3
-  },
-  {
-    name: "chewie",
-    image: "<img src='./assets/chewy.jpg'>",
-    value: 4
-  },
-  {
-    name: "darth",
-    image: "<img src='./assets/anakin.jpg'>",
-    value: 5
-  },
-  {
-    name: "greedo",
-    image: "<img src='./assets/shot-too-late.jpg'>",
-    value: 6
-  },
-  {
-    name: "han",
-    image: "<img src='./assets/shot-first.jpg'>",
-    value: 7
-  },
-  {
-    name: "leia",
-    image: "<img src='./assets/princess.jpg'>",
-    value: 8
-  },
-  {
-    name: "r2d2",
-    image: "<img src='./assets/droid.jpg'>",
-    value: 9
-  }]
+  ]
+
+  // Duplicate array to create a match for each card
+let gameGrid = cardArr.concat(cardArr)
+
+// Randomize game grid on each load
+gameGrid.sort(() => 0.5 - Math.random())

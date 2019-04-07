@@ -21,7 +21,7 @@ body {
 #canvas {
   height: 810px;
   margin: 0 20%;
-  width: 1000px;
+  width: 965px;
   background-color: transparent;
   border: 2px solid yellow;
   position: relative;
@@ -77,8 +77,40 @@ body {
   outline: none;
 
 }
+
+.grid {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  position: absolute;
+  top: 320px;
+}
+
+.card {
+  margin: 5px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  position: relative;
+  transition: all 0.4s linear;
+  transform-style: preserve-3d;
+  margin: 5px;
+  height: 150px;
+  width: 150px;
+}
+
+.selected {
+  border: 5px solid yellow;
+  transform: rotateY(180deg);
+}
+
+.match {
+  background-image: none !important;
+}
 /* playing field div */
-.play-field {
+/*#play-field {
   width: 1000px;
   height: 630px;
   display: flex;
@@ -87,18 +119,55 @@ body {
   position: absolute;
   top: 350px;
   display: none;
-}
+}*/
 
-.card {
+
+
+/*.card {
   background-image: url("./assets/uncle-luke.jpg");
   background-size: cover;
+}*/
+
+.card,
+.back,
+.front {
+  height: 150px;
+  width: 150px;
 }
 
-.selected {
-  border: 2px yellow solid
+.back,
+.front {
+  position: absolute;
+  backface-visibility: hidden;
 }
 
+.front {
+  background-image: url("./assets/uncle-luke.jpg");
+  background-size: cover;
 
+}
+
+.back {
+  transform: rotateY(180deg);
+  background-color: white;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.match .front {
+  background: transparent !important;
+}
+
+#turns {
+  position: absolute;
+  left: 100px;
+}
+
+#score {
+  position: absolute;
+  right: -70px;
+}
 /*.card {
   z-index: 0;
 }
