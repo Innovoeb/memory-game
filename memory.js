@@ -29,6 +29,7 @@ $(document).ready(function () {
     let previousTarget = null
     // r2d2 sound on game start
     r2d2.play();
+    fates.play();
     // hide gametitle & startbutton, show gamegrid after startgame button press
     $(".scoreboard").show()
     $("#start").remove()
@@ -149,7 +150,7 @@ $(document).ready(function () {
 
 
       if (turns == 0) {
-        fates.play();
+        theme.play();
         $("#start").show()
         document.querySelector('.game-message').innerHTML = `Aren’t you a little short for a stormtrooper?`
 
