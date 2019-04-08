@@ -1,6 +1,3 @@
-
-
-
 html {
   box-sizing: border-box;
 }
@@ -41,16 +38,17 @@ body {
 }
 /* scoreboard div */
 .scoreboard {
-  height: 100px;
-  width: 1000px;
+  height: 50px;
+  width: 965px;
   color: yellow;
   display: flex;
   justify-content: space-around;
   font-size: 3em;
-  position: absolute;
-  top: 770px;
-  left: 290px;
+  position: relative;
+  /* top: 770px;
+  left: 290px; */
   display: none;
+  margin: 0 20%;
 }
 
 
@@ -143,10 +141,12 @@ body {
 /* guesses left div */
 #turns {
   position: absolute;
-  left: 100px;
+  top: -50px;
+  left: 0;
 }
 /* score div */
 #score {
   position: absolute;
-  right: -70px;
+  top: -50px;
+  right: 0;
 }

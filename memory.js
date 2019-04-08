@@ -1,5 +1,5 @@
 // jquery ready on page load
-$(document).ready(function() {
+$(document).ready(function () {
 
 
 
@@ -20,136 +20,156 @@ $(document).ready(function() {
 
 
   // game initialization
-$('.title').on('click', '#start', function () {
+  $('.title').on('click', '#start', function () {
 
     let firstGuess = ''
     let secondGuess = ''
     let count = 0
     let delay = 1200
     let previousTarget = null
-      // r2d2 sound on game start
-      r2d2.play();
-      // hide gametitle & startbutton, show gamegrid after startgame button press
-      $(".scoreboard").show()
-      $("#start").remove()
-      $("#game-title").remove()
-      // Grab the div with an id of root
-      const game = document.getElementById('game')
-      // Create a section with a class of grid
-      const grid = document.createElement('section')
-      grid.setAttribute('class', 'grid')
-      //  Append the grid section to the game div
-      game.appendChild(grid)
+    // r2d2 sound on game start
+    r2d2.play();
+    // hide gametitle & startbutton, show gamegrid after startgame button press
+    $(".scoreboard").show()
+    $("#start").remove()
+    $("#game-title").remove()
+    // Grab the div with an id of root
+    const game = document.getElementById('game')
+    // Create a section with a class of grid
+    const grid = document.createElement('section')
+    grid.setAttribute('class', 'grid')
+    //  Append the grid section to the game div
+    game.appendChild(grid)
 
-      // For each item in the cards array...
-      gameGrid.forEach(item => {
-        // Create card element with the name dataset
-        const card = document.createElement('div')
-        card.classList.add('card')
-        card.dataset.name = item.name
+    // For each item in the cards array...
+    gameGrid.forEach(item => {
+      // Create card element with the name dataset
+      const card = document.createElement('div')
+      card.classList.add('card')
+      card.dataset.name = item.name
 
-        // Create front of card
-        const front = document.createElement('div')
-        front.classList.add('front')
+      // Create front of card
+      const front = document.createElement('div')
+      front.classList.add('front')
 
-        // Create back of card, which contains
-        const back = document.createElement('div')
-        back.classList.add('back')
-        back.style.backgroundImage = `url(${item.image})`
+      // Create back of card, which contains
+      const back = document.createElement('div')
+      back.classList.add('back')
+      back.style.backgroundImage = `url(${item.image})`
 
-        // Append card to grid, and front and back to each card
-        grid.appendChild(card)
-        card.appendChild(front)
-        card.appendChild(back)
+      // Append card to grid, and front and back to each card
+      grid.appendChild(card)
+      card.appendChild(front)
+      card.appendChild(back)
+    })
+
+    // Add match CSS
+    const match = () => {
+      const selected = document.querySelectorAll('.selected');
+      selected.forEach(card => {
+        card.classList.add('match')
       })
+    }
 
-      // Add match CSS
-      const match = () => {
-        const selected = document.querySelectorAll('.selected');
-        selected.forEach(card => {
-          card.classList.add('match')
-        })
+    // reset guesses
+    const resetGuesses = () => {
+      firstGuess = ''
+      secondGuess = ''
+      count = 0;
+      previousTarget = null
+
+      var selected = document.querySelectorAll('.selected')
+      selected.forEach(card => {
+        card.classList.remove('selected')
+      });
+    }
+
+
+    // Add event listener to grid
+    grid.addEventListener('click', function (event) {
+      blaster.play()
+      // The event target is our clicked item
+      const clicked = event.target
+
+      if (
+        clicked.nodeName === 'SECTION' ||
+        clicked === previousTarget ||
+        clicked.parentNode.classList.contains('selected') ||
+        clicked.parentNode.classList.contains('match')
+      ) {
+        return;
       }
 
-      // reset guesses
-      const resetGuesses = () => {
-          firstGuess = ''
-          secondGuess = ''
-          count = 0;
-          previousTarget = null
+      if (count < 2) {
+        count++;
 
-          var selected = document.querySelectorAll('.selected')
-          selected.forEach(card => {
-            card.classList.remove('selected')
-          });
+        if (count === 1) {
+          // Assign first guess
+          firstGuess = clicked.parentNode.dataset.name
+          console.log(firstGuess)
+          clicked.parentNode.classList.add('selected');
+        } else {
+          // Assign second guess
+          secondGuess = clicked.parentNode.dataset.name
+          console.log(secondGuess)
+          clicked.parentNode.classList.add('selected')
+        }
+        // If both guesses are not empty...
+        if (firstGuess !== '' && secondGuess !== '') {
+          // and the first guess matches the second match...
+          if (firstGuess === secondGuess) {
+            // run the match function
+            score++
+            console.log(score)
+            shuffArr(praise)
+            document.querySelector('.game-message').innerHTML = `${praise[0]}`
+            setTimeout(match, delay);
+            setTimeout(resetGuesses, delay);
+          } else {
+            turns--
+            console.log(turns)
+            shuffArr(encourage)
+            document.querySelector('.game-message').innerHTML = `${encourage[0]}`
+            setTimeout(resetGuesses, delay);
+          }
+          // Set previous target to clicked
+          previousTarget = clicked;
+        }
+        // scoreboard
+        document.querySelector('#score').innerHTML = `Score: ${score}`
+        document.querySelector('#turns').innerHTML = `${turns} Guesses Left`
+      }
+      //win/loss conditions
+      if (score == 9) {
+        cantina.play();
+        $("#start").show()
+        document.querySelector('.game-message').innerHTML = `The force is strong with this one!`
+
       }
 
 
-      // Add event listener to grid
-      grid.addEventListener('click', function(event) {
-          blaster.play()
-          // The event target is our clicked item
-          const clicked = event.target
-
-          if (
-                clicked.nodeName === 'SECTION' ||
-                clicked === previousTarget ||
-                clicked.parentNode.classList.contains('selected') ||
-                clicked.parentNode.classList.contains('match')
-              )   {
-                    return;
-                  }
-
-          if (count < 2) {
-              count++;
-
-              if (count === 1) {
-                // Assign first guess
-                firstGuess = clicked.parentNode.dataset.name
-                console.log(firstGuess)
-                clicked.parentNode.classList.add('selected');
-              } else {
-                // Assign second guess
-                secondGuess = clicked.parentNode.dataset.name
-                console.log(secondGuess)
-                clicked.parentNode.classList.add('selected')
-              }
-              // If both guesses are not empty...
-              if (firstGuess !== '' && secondGuess !== '') {
-                // and the first guess matches the second match...
-                if (firstGuess === secondGuess) {
-                // run the match function
-                score++
-                console.log(score)
-                setTimeout(match, delay);
-                setTimeout(resetGuesses, delay);
-              } else {
-                turns--
-                console.log(turns)
-                setTimeout(resetGuesses, delay);
-              }
-                // Set previous target to clicked
-                previousTarget = clicked;
-              }
-                // scoreboard
-                document.querySelector('#score').innerHTML = `Score: ${score}`
-                document.querySelector('#turns').innerHTML = `${turns} Guess Left`
-            }
-                //win/loss conditions
-                if (score == 9) {
-                  cantina.play();
-                  document.querySelector('.game-message').innerHTML = `The force is strong with this one!`
-
-                }
+      if (turns == 0) {
+        fates.play();
+        $("#start").show()
+        document.querySelector('.game-message').innerHTML = `Aren’t you a little short for a stormtrooper?`
 
 
-                if (turns == 0) {
-                  fates.play();
-                  document.querySelector('.game-message').innerHTML = `Aren’t you a little short for a stormtrooper?`
+      }
 
-                }
+    })
 
-          })
+  })
 
-        })
+  // shuffle array function
+  function shuffArr(array) {
+    var ctr = array.length, temp, index;
+    while (ctr > 0) {
+      index = Math.floor(Math.random() * ctr)
+      ctr--
+      temp = array[ctr]
+      array[ctr] = array[index]
+      array[index] = temp
+    }
+    return array
+  }
 })
