@@ -47,7 +47,7 @@ var cardArr = [
   },
   ]
 
-  // Duplicate array to create a match for each card
+// Duplicate array to create a match for each card
 let gameGrid = cardArr.concat(cardArr)
 
 // Randomize game grid on each load

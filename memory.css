@@ -50,6 +50,7 @@ body {
   position: absolute;
   top: 770px;
   left: 290px;
+  display: none;
 }
 
 
@@ -63,7 +64,7 @@ body {
   text-align: center
 
 }
-
+/* start button */
 #start {
   position: absolute;
   left: 370px;
@@ -77,7 +78,7 @@ body {
   outline: none;
 
 }
-
+/* game grid */
 .grid {
   max-width: 960px;
   margin: 0 auto;
@@ -87,7 +88,7 @@ body {
   position: absolute;
   top: 320px;
 }
-
+/* card div */
 .card {
   margin: 5px;
   background-size: contain;
@@ -100,53 +101,34 @@ body {
   height: 150px;
   width: 150px;
 }
-
+/* styles when card selected */
 .selected {
   border: 5px solid yellow;
   transform: rotateY(180deg);
 }
-
+/* when cards match - disappear */
 .match {
   background-image: none !important;
 }
-/* playing field div */
-/*#play-field {
-  width: 1000px;
-  height: 630px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  position: absolute;
-  top: 350px;
-  display: none;
-}*/
-
-
-
-/*.card {
-  background-image: url("./assets/uncle-luke.jpg");
-  background-size: cover;
-}*/
-
+/* all cards have same height/width */
 .card,
 .back,
 .front {
   height: 150px;
   width: 150px;
 }
-
+/* back and front of card */
 .back,
 .front {
   position: absolute;
   backface-visibility: hidden;
 }
-
+/* "back" of cards img */
 .front {
   background-image: url("./assets/uncle-luke.jpg");
   background-size: cover;
-
 }
-
+/* "front" of cards */
 .back {
   transform: rotateY(180deg);
   background-color: white;
@@ -154,84 +136,17 @@ body {
   background-repeat: no-repeat;
   background-position: center center;
 }
-
+/* when cards match turn transparent */
 .match .front {
   background: transparent !important;
 }
-
+/* guesses left div */
 #turns {
   position: absolute;
   left: 100px;
 }
-
+/* score div */
 #score {
   position: absolute;
   right: -70px;
-}
-/*.card {
-  z-index: 0;
-}
-
-/* back of card */
-/*.hide {
-  background-image: url("./assets/uncle-luke.jpg");
-  background-size: cover;
-}
-
-/* playing field rows & columns */
-.row-1 {
-  height: 150px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
-
-.row-2 {
-  height: 150px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
-
-.row-3 {
-  height: 150px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
-
-.col-1 {
-  width: 150px;
-  height: 150px;
-  border: solid 2px antiquewhite;
-}
-
-.col-2 {
-  width: 150px;
-  height: 150px;
-  border: solid 2px antiquewhite;
-}
-
-.col-3 {
-  width: 150px;
-  height: 150px;
-  border: solid 2px antiquewhite;
-}
-
-.col-4 {
-  width: 150px;
-  height: 150px;
-  border: solid 2px antiquewhite;
-}
-
-.col-5 {
-  width: 150px;
-  height: 150px;
-  border: solid 2px antiquewhite;
-}
-
-.col-6 {
-  width: 150px;
-  height: 150px;
-  border: solid 2px antiquewhite;
 }

@@ -8,4 +8,7 @@ var soundboard = [
     }, {
         name: "cantina",
         url: "./assets/cantina.mp3"
+    }, {
+        name: "theme",
+        url: "./assets/starwars-memory-theme.mp3"
     }]
